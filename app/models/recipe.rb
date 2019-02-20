@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  belongs_to :recipe_type
+
   validates :title, :difficulty, :recipe_type, :cuisine,
     :cook_method, :ingredients, presence: true
   validates :cook_time, numericality: {other_than: 0, message: 'O tempo de preparo não pode ser igual a 0 (zero)!'}
