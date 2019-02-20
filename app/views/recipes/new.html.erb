@@ -1,5 +1,5 @@
 <% if !@recipe.errors.full_messages.nil? %>
-  <p>Você deve informar todos os dados da receita</p>
+  <p>Não foi possível salvar a receita</p>
   <% @recipe.errors.full_messages.each do |message| %>
    <p> <%= message %> </p>
   <% end %>

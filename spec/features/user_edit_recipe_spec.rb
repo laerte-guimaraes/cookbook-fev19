@@ -49,6 +49,6 @@ feature 'User update recipe' do
     click_on 'Enviar'
 
 
-    expect(page).to have_content('Você deve informar todos os dados da receita')
+    expect(page).to have_content('Não foi possível salvar a receita')
   end
 end
