@@ -1,3 +1,10 @@
+<% if !@recipe.errors.full_messages.nil? %>
+  <p>Você deve informar todos os dados da receita</p>
+  <% @recipe.errors.full_messages.each do |message| %>
+   <p> <%= message %> </p>
+  <% end %>
+<% end%>
+
 <%= form_for @recipe do |f| %>
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title %>
