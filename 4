@@ -1,0 +1,27 @@
+FF
+
+Failures:
+
+  1) Admin register recipe_type successfully
+     Failure/Error: click_on 'Cadastrar tipo de receita'
+
+     Capybara::ElementNotFound:
+       Unable to find link or button "Cadastrar tipo de receita"
+     # ./spec/features/admin_register_recipe_type_spec.rb:6:in `block (2 levels) in <top (required)>'
+
+  2) Admin register recipe_type and must fill in name
+     Failure/Error: visit new_recipe_type_path
+
+     NameError:
+       undefined local variable or method `new_recipe_type_path' for #<RSpec::ExampleGroups::AdminRegisterRecipeType:0x00007f8ee7e5f3d0>
+       Did you mean?  new_recipe_path
+     # ./spec/features/admin_register_recipe_type_spec.rb:14:in `block (2 levels) in <top (required)>'
+
+Finished in 0.54014 seconds (files took 1.02 seconds to load)
+2 examples, 2 failures
+
+Failed examples:
+
+rspec ./spec/features/admin_register_recipe_type_spec.rb:4 # Admin register recipe_type successfully
+rspec ./spec/features/admin_register_recipe_type_spec.rb:13 # Admin register recipe_type and must fill in name
+
