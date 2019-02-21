@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :recipe_type
+  belongs_to :cuisine
 
   validates :title, :difficulty, :recipe_type, :cuisine,
     :cook_method, :ingredients, presence: true
