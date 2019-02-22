@@ -1,0 +1,6 @@
+<h1> Cadastro de Cozinhas </h1>
+<%= form_for @cuisine do |f| %>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+    <%= f.submit 'Enviar' %>
+<% end %>
