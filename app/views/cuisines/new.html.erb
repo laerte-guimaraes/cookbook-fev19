@@ -1,4 +1,11 @@
 <h1> Cadastro de Cozinhas </h1>
+
+<% if @cuisine.errors.any? %>
+
+  <p>Você deve informar o nome da cozinha</p>
+
+<% end %>
+
 <%= form_for @cuisine do |f| %>
     <%= f.label :name, 'Nome' %>
     <%= f.text_field :name %>

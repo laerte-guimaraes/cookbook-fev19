@@ -13,7 +13,15 @@ feature 'Admin register Cuisine' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Brasileira')
+  end
 
+  scenario 'without name param' do
+    visit root_path
+    click_on 'Cadastrar uma cozinha'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Você deve informar o nome da cozinha')
+    expect(Cuisine.count).to eq(0)
   end
 
 end
