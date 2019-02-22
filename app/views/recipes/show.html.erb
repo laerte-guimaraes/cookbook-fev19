@@ -1,6 +1,7 @@
 <h1><%= @recipe.title %></h1>
-
-<%= image_tag @recipe.photo %>
+<% if @recipe.photo.attached? %> 
+  <%= image_tag @recipe.photo %>
+<% end %>
 
 <h3>Detalhes</h3>
 <p><%= @recipe.recipe_type.name %></p>
