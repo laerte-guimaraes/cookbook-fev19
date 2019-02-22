@@ -1,9 +1,10 @@
 <h1> Cadastro de Cozinhas </h1>
-
+  
 <% if @cuisine.errors.any? %>
-
-  <p>Você deve informar o nome da cozinha</p>
-
+<p>Não foi possível salvar a cozinha</p>
+  <% @cuisine.errors.full_messages.each do |message| %>
+   <p> <%= message %> </p>
+  <% end %>
 <% end %>
 
 <%= form_for @cuisine do |f| %>
