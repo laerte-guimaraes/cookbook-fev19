@@ -41,6 +41,11 @@ class RecipesController < ApplicationController
     end  
   end
 
+  def destroy
+    Recipe.find(params[:id]).delete
+    redirect_to root_path
+  end
+
   private
 
   def recipe_params
