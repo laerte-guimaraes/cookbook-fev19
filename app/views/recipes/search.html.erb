@@ -1,0 +1,6 @@
+<h1> Busca de Receitas </h1>
+<h2> Total de Receitas encontradas: <%= @recipes.size   %> </h2>
+
+<% @recipes.each do |recipe|%>
+<h3> <%= recipe.title %> </h3>
+<% end %>

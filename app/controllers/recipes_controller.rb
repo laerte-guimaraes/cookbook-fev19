@@ -46,6 +46,10 @@ class RecipesController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @recipes = Recipe.where(title: params[:q])
+  end
+
   private
 
   def recipe_params
