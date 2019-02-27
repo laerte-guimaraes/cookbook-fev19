@@ -10,11 +10,23 @@
   </head>
 
   <body>
+    
+    <nav>
+      <% if !user_signed_in? %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% else %>
+        <p>Logado como <%= current_user.email %>.</p>
+        <%= link_to 'Logout', new_user_session_path %>
+      <% end %>
+    </nav>
+
     <%= form_tag(search_recipes_path, method: "get") do %>
       <%= label_tag(:q, "Pesquisa de Receita") %>
       <%= text_field_tag(:q) %>
       <%= submit_tag("Buscar") %>
     <% end %>
+
     <%= yield %>
+    
   </body>
 </html>
