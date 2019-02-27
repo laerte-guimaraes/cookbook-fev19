@@ -57,6 +57,12 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
+  def unfavorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(favorite: false)
+    redirect_to @recipe
+  end
+
   private
 
   def recipe_params
