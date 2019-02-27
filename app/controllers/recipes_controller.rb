@@ -50,6 +50,13 @@ class RecipesController < ApplicationController
     @recipes = Recipe.where("title like ?", "%#{params[:q]}%")
   end
 
+  def favorite
+    @recipe = Recipe.find(params[:id])
+    @recipe.favorite = true
+    @recipe.save
+    redirect_to @recipe
+  end
+
   private
 
   def recipe_params

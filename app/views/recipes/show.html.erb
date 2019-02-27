@@ -3,6 +3,10 @@
   <%= image_tag @recipe.photo %>
 <% end %>
 
+<% if @recipe.favorite %>
+  <img src='<%= Rails.root.join('spec','support','star.png') %>'>
+<% end %>
+
 <h3>Detalhes</h3>
 <p><%= @recipe.recipe_type.name %></p>
 <p><%= @recipe.cuisine.name %></p>
@@ -12,6 +16,8 @@
 <p><%= @recipe.ingredients %></p>
 <h3>Como Preparar</h3>
 <p><%= @recipe.cook_method %></p>
+
+<%= link_to 'Favoritar', favorite_recipe_path(@recipe), method: :post %>
 
 <%= link_to 'Editar', edit_recipe_path(@recipe) %>
 <%= link_to("Deletar", @recipe, method: :delete) %>
