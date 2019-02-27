@@ -17,4 +17,21 @@ feature 'User login' do
     expect(page).to have_css('p', text: "Logado como #{test_email}.")
   end
 
+  scenario 'and logout sucessfully' do
+    test_email = 'email@quenaoexiste.com'
+    User.create!(email: test_email, password: '12345678')
+
+    visit root_path
+    click_on 'Login'
+    fill_in 'Email', with: test_email
+    fill_in 'Password', with: '12345678'
+    click_on 'Entrar'
+    click_on 'Logout'
+
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content('Login')
+    expect(page).not_to have_link('Logout')
+    expect(page).not_to have_css('p', text: "Logado como #{test_email}.")
+  end
+
 end
