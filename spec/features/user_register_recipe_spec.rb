@@ -6,8 +6,10 @@ feature 'User register recipe' do
     RecipeType.create(name: 'Sobremesa')
     RecipeType.create(name: 'Entrada')
     Cuisine.create(name: 'Arabe')
+    user = User.create(email: 'email@teste.com', password: '12345678')
 
     # simula a ação do usuário
+    login_as(user, scope: :user)
     visit root_path
     click_on 'Enviar uma receita'
 
@@ -37,6 +39,9 @@ feature 'User register recipe' do
   end
 
   scenario 'and must fill in all fields' do
+    user = User.create(email: 'email@teste.com', password: '12345678')
+    login_as(user, scope: :user)
+
     # simula a ação do usuário
     visit root_path
     click_on 'Enviar uma receita'
@@ -50,4 +55,17 @@ feature 'User register recipe' do
 
     expect(page).to have_content('Não foi possível salvar a receita')
   end
+
+  scenario 'without being logged in' do
+    visit new_recipe_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  scenario 'and cannot see recipes registration link' do
+    visit root_path
+
+    expect(page).not_to have_link('Enviar uma receita')
+  end
+
 end
