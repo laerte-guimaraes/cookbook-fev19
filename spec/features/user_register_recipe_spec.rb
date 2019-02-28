@@ -36,6 +36,8 @@ feature 'User register recipe' do
     expect(page).to have_css('h3', text: 'Como Preparar')
     expect(page).to have_css('p', text:  'Misturar tudo e servir. Adicione limão a gosto.')
     expect(page).to have_css('img[src*="tabule.jpeg"]')
+    expect(page).to have_css('p', text: "Adicionado por: #{user.email}")
+    expect(Recipe.last.user).to eq(user)
   end
 
   scenario 'and must fill in all fields' do

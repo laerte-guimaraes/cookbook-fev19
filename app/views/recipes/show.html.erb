@@ -3,6 +3,8 @@
   <%= image_tag @recipe.photo %>
 <% end %>
 
+<p> Adicionado por: <%= @recipe.user.email %> </p>
+
 <% if @recipe.favorite %>
   <img src='<%= Rails.root.join('spec','support','star.png') %>'>
 <% end %>
