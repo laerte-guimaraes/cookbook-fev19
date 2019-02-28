@@ -66,6 +66,10 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
+  def my_recipes
+    @recipes = Recipe.where(user_id: current_user.id)
+  end
+
   private
 
   def recipe_params

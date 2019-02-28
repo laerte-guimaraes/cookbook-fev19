@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       delete 'unfavorite'
     end
   end
+
+  get 'my-recipes', to: 'recipes#my_recipes'
+
   resources :recipe_types
   resources :cuisines
 end

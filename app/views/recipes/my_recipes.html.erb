@@ -1,0 +1,7 @@
+<h1> Minhas Receitas </h1>
+
+<h2> Total de receitas cadastradas: <%= @recipes.size %> </h2>
+
+<% @recipes.each do |recipe| %>
+  <%= link_to recipe.title, recipe %>
+<% end %>
