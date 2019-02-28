@@ -5,10 +5,12 @@ feature 'User delete recipe' do
   scenario 'successfully' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     visit root_path
     click_on recipe.title
@@ -21,15 +23,18 @@ feature 'User delete recipe' do
   scenario 'with one or more recipes' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe1 = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     recipe2 = Recipe.create(title: 'Bolo sem Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 30, ingredients: 'Farinha, açucar',
-                  cook_method: 'Corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     visit root_path
     click_on recipe1.title

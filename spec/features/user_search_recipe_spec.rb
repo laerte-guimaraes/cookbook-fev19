@@ -5,14 +5,17 @@ feature 'User search recipe' do
   scenario 'and finds one result' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de Chocolate', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, chocolate',
-                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
     other_recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     visit root_path
     fill_in 'Pesquisa de Receita', with: 'Bolo de Chocolate'
@@ -27,14 +30,17 @@ feature 'User search recipe' do
   scenario 'and cannot find anything' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de Chocolate', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, chocolate',
-                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
     other_recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     visit root_path
     fill_in 'Pesquisa de Receita', with: 'Pizza Doce'
@@ -50,18 +56,22 @@ feature 'User search recipe' do
   scenario 'and finds more than one result' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de Chocolate', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, chocolate',
-                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe o chocolate, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
     other_recipe = Recipe.create(title: 'Bolo de Cenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
     third_recipe = Recipe.create(title: 'Torta de Abacate', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Abacate, Farinha',
-                  cook_method: 'Cozinhe, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: user)
 
     visit root_path
     fill_in 'Pesquisa de Receita', with: 'Bolo'

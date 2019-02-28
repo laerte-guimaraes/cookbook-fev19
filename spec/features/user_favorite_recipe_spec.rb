@@ -4,12 +4,14 @@ feature 'User favorite a recipe' do
   scenario 'successfully' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
                            cook_time: 50,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           favorite: false )
+                           favorite: false,
+                           user: user)
 
     visit root_path
     click_on recipe.title
@@ -29,12 +31,14 @@ feature 'User unfavorite a recipe' do
   scenario 'successfully' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
+    user =  User.create!(email: 'test_email@mail.com', password: '12345678')
     recipe = Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
                            recipe_type: recipe_type, cuisine: cuisine,
                            cook_time: 50,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           favorite: true )
+                           favorite: true,
+                           user: user)
 
     visit root_path
     click_on recipe.title
