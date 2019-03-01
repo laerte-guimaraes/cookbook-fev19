@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User register recipes list' do
+feature 'User register list' do
   scenario 'successfully' do
     user = User.create(email: 'email@teste.com', password: '12345678')
     login_as(user, scope: :user)
