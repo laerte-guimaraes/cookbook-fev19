@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       post 'favorite'
       delete 'unfavorite'
+      post 'add_list'
     end
   end
 

@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @lists = List.all
   end
 
   def new
@@ -68,6 +69,13 @@ class RecipesController < ApplicationController
 
   def my_recipes
     @recipes = Recipe.where(user_id: current_user.id)
+  end
+
+  def add_list
+    @list = List.find(params[:list_id])
+    @recipe = Recipe.find(params[:id])
+    ListRecipe.create(list: @list, recipe: @recipe)
+    redirect_to @recipe
   end
 
   private

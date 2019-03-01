@@ -25,6 +25,12 @@
   <%= link_to 'Remover dos favoritos', unfavorite_recipe_path(@recipe), method: :delete %>
 <% end %>
 
+<%= form_tag(add_list_recipe_path, method: "post") do %>
+  <%= label_tag :list_id, 'Minhas Listas' %>
+  <%= select_tag(:list_id, options_from_collection_for_select(@lists, :id, :name)) %>
+  <%= submit_tag("Adicionar na lista selecionada") %>
+<% end %>
+
 <%= link_to 'Editar', edit_recipe_path(@recipe) %>
 <%= link_to("Deletar", @recipe, method: :delete) %>
 <%= link_to 'Voltar', root_path %>
