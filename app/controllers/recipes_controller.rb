@@ -21,6 +21,8 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     if @recipe.save
       redirect_to @recipe
+      # RecipesMailer.with(recipe_id: @recipe.id).notify_new_recipe
+      RecipesMailer.notify_new_recipe(@recipe.id)
     else
       @recipe_types = RecipeType.all
       @cuisines = Cuisine.all
